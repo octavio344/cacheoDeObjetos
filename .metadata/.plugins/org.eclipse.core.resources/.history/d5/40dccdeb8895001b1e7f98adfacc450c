@@ -1,0 +1,35 @@
+package com.iua.soa.config;
+
+import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import com.hazelcast.client.config.ClientConfig;
+import com.hazelcast.config.NearCacheConfig;
+
+@Configuration
+@EnableCaching
+public class ClientCacheConfig {
+
+	@Bean
+	  ClientConfig config() {
+		// Creamos una instacia de configuración del cliente
+	    ClientConfig clientConfig = new ClientConfig();
+	    // Agregamos la Configuración para que sepa que tpologia utilizar --> NearCache
+	    clientConfig.addNearCacheConfig(nearCacheConfig());
+	    
+	    return clientConfig;
+	  }
+
+		// Devuelve una instancia de la topologia configurada
+	  private NearCacheConfig nearCacheConfig() {
+		  
+	    NearCacheConfig nearCacheConfig = new NearCacheConfig();
+	    // Establecemos el nombre de la Near Cache --> facturas
+	    nearCacheConfig.setName("facturas");
+	    // Establecemos el TTL de los objetos en la cache
+	    nearCacheConfig.setTimeToLiveSeconds(360);
+	    return nearCacheConfig;
+	  }
+	
+}

@@ -1,0 +1,5 @@
+package com.iua.soa.model.dto;
+
+public class FacturasPagasDto {
+
+}

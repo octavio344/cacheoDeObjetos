@@ -1,0 +1,5 @@
+package com.iua.soa.config;
+
+public class EmbeddedCacheConfig {
+
+}

@@ -1,0 +1,7 @@
+package com.iua.soa.model.dto;
+
+import java.io.Serializable;
+
+public class FacturasPagasDto implements Serializable {
+
+}

@@ -1,0 +1,27 @@
+package com.iua.soa.business;
+
+import java.util.List;
+
+import com.iua.soa.business.exception.BadStateException;
+import com.iua.soa.business.exception.BusinessException;
+import com.iua.soa.business.exception.NotFoundException;
+import com.iua.soa.business.exception.UserNotMatchException;
+import com.iua.soa.model.Factura;
+import com.iua.soa.model.Transaccion;
+
+public interface IFacturaBusiness {
+
+		public Factura save(Factura f) throws BusinessException;
+		
+		public List<Factura> list() throws BusinessException;
+		
+		public Factura findById(Long id) throws BusinessException, NotFoundException;
+		
+		public void delete(Long id) throws BusinessException, NotFoundException;
+		
+		public Transaccion pagar(Factura f) throws BusinessException,NotFoundException,BadStateException;
+		
+		public List<Transaccion> pagar(List<Factura> facturaList) throws NotFoundException, BusinessException ,BadStateException ,UserNotMatchException;
+
+		public List<Factura> getPagadas(Cliente c) throws BusinessException, NotFoundException;
+}
